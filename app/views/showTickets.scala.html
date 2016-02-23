@@ -1,0 +1,36 @@
+@* showTickets T emplate File *@
+@(tickets: List[Ticket])
+
+@main("Ticket List"){
+  <h1 align="center"> Ticket List </h1>
+  <center><a href = "/add_ticket"><input type="button" id="Add" name= "Add" value= "Add Ticket"></a></center>
+  <br />
+  @if(tickets.size>0){
+  <table border="1" align="center">
+    <tr>
+      <th>Ticket No:</th>
+      <th>Created By</th>
+      <th>Description</th>
+      <th>Severity</th>
+      <th>Status</th>
+      <th>Cancelled Reason</th>
+      <th>Cancelled Others Description</th>
+      <th>Comments</th>
+    </tr>
+    @for(ticket <- tickets){
+      <tr>
+        <td>@ticket.id</td>
+        <td>@ticket.CreatedBy</td>
+        <td>@ticket.Description</td>
+        <td>@ticket.Severity</td>
+        <td>@ticket.Status</td>
+        <td>@ticket.CancelledReason</td>
+        <td>@ticket.CancelledOtherDescription</td>
+        <td>@ticket.Comments</td>
+      </tr>
+    }
+  </table>
+  } else {
+  No Tickets found. Click to Add 
+  }
+}

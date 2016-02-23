@@ -1,0 +1,40 @@
+@* addTicket Template File *@
+@(ticketForm: Form[Ticket])
+@import helper._
+@import play.api.Play.current
+@import play.api.i18n.Messages.Implicits._
+
+@main("Add Ticket") {
+@form(action = routes.Tickets.addTicket, 'method -> "POST"){
+
+  <table>
+    <tr>
+      <td>@inputText(ticketForm("CreatedBy"))</td>
+    </tr>
+    <tr>
+      <td>@inputText(ticketForm("Description"))</td>
+    </tr>
+    <tr>
+      <td>@inputText(ticketForm("Severity"), '_showConstraints -> false)</td>
+    </tr>
+    <tr>
+      <td>@select(ticketForm("Status"), options(List("Cancelled", "Completed")))</td>
+    </tr>
+    <tr>
+      <td>@select(ticketForm("CancelledReason"), options(List("EndUser", "Others")))</td>
+    </tr>
+    <tr>
+      <td>@inputText(ticketForm("CancelledOtherDescription"))</td>
+    </tr>
+    <tr>
+      <td>@inputText(ticketForm("Comments"))</td>
+    </tr>
+    <tr>
+      <td align= "center"><input type="submit" value="Save" /></td>
+    </tr>
+    <tr>
+    </tr>
+  </table>
+
+}
+}
